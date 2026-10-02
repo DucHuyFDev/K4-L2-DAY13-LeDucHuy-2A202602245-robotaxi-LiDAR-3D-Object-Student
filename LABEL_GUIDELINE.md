@@ -6,13 +6,13 @@ Tài liệu này dùng cho job nguồn trên CVAT và snapshot QC chỉ đọc. 
 
 Schema ca này có năm nhãn cuboid: `vehicles`, `two-wheels`, `pedestrian`, `Animal`, `Obstacle`. Model chỉ tạo pre-label cho `vehicles`, `two-wheels`, `pedestrian`. Bạn vẫn phải tìm, thêm và QC `Animal` và `Obstacle` khi nhận ra đối tượng có cơ sở. Không giữ hộp chỉ vì model vẽ sẵn; không bỏ qua đối tượng chỉ vì model không vẽ.
 
-| Đối tượng xác định được | Class | Điểm cần kiểm |
-| --- | --- | --- |
-| Ô tô, van, xe tải, xe buýt | `vehicles` | Bao thân xe; xe dài không co thành hộp sedan theo mảng điểm gần |
-| Xe máy, xe đạp | `two-wheels` | Phân biệt với người/xe bốn bánh; không giữ class theo model khi ảnh cho thấy khác |
-| Người | `pedestrian` | Đừng ghép nhiều người vào một hộp; hướng cần bằng chứng |
-| Động vật | `Animal` | Chỉ thêm khi xác định được; model không tạo lớp này |
-| Vật cản thuộc schema của ca | `Obstacle` | Không gán mọi cây/cột/mặt đường vào lớp này; trường hợp ngoài taxonomy hỏi coach |
+| Đối tượng xác định được | Class          | Điểm cần kiểm                                                                                 |
+| --------------------------------- | -------------- | ------------------------------------------------------------------------------------------------- |
+| Ô tô, van, xe tải, xe buýt    | `vehicles`   | Bao thân xe; xe dài không co thành hộp sedan theo mảng điểm gần                          |
+| Xe máy, xe đạp                 | `two-wheels` | Phân biệt với người/xe bốn bánh; không giữ class theo model khi ảnh cho thấy khác     |
+| Người                           | `pedestrian` | Đừng ghép nhiều người vào một hộp; hướng cần bằng chứng                             |
+| Động vật                       | `Animal`     | Chỉ thêm khi xác định được; model không tạo lớp này                                   |
+| Vật cản thuộc schema của ca   | `Obstacle`   | Không gán mọi cây/cột/mặt đường vào lớp này; trường hợp ngoài taxonomy hỏi coach |
 
 Chọn class theo PCD và ảnh camera của cùng frame. Kiểm lại những trường hợp dễ lẫn như xe hai bánh bị gán `vehicles`. Nếu vùng che khuất khiến class chưa thể phân biệt, ghi “chưa chắc” cùng lý do thay vì đoán. Trong CVAT, sửa class của hộp nguồn rồi **Save**. Trong viewer QC, chọn **Sai class**, ghi ID QC và bằng chứng; không sửa snapshot.
 
